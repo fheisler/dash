@@ -1,6 +1,9 @@
 Dash - a customized homepage of news and events
 ====
 
+http://dashapp.herokuapp.com
+
+
 This app relies on the WordNet corpora of NLTK, which cannot be installed non-locally:
 https://groups.google.com/forum/?fromgroups=#!topic/nltk-users/D_nvJG8n4gM
 
