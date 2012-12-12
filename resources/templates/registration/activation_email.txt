@@ -1,0 +1,7 @@
+Your activation key: {{ activation_key }}
+
+Please use this link to activate your account:
+http://dashapp.herokuapp.com/user/activate/{{ activation_key }}/
+
+After activation, sign in to start using Dash:
+http://dashapp.herokuapp.com/user/login/

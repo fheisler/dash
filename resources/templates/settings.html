@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}
+Settings | Dash App
+{% endblock %}
+
+{% block navlist %}
+	<li class="logo"><a href="/index"><b>Dash</b></a></li>
+		{% if user.is_authenticated %}
+			<li class="login"><a href="/signout">Sign Out</a></li>
+		{% else %}
+			<li class="login"><a href="/user/login">Sign In</a></li>
+			<li class="register"><a href="/user/register">Register</a></li>
+		{% endif %}
+    <li class="settings"><a href="/settings">Settings</a></li>
+    <li class="home"><a href="/index">Home</a></li>
+{% endblock %}
+
+{% block content %}
+	<h1>Settings</h1>
+	
+	<hr />
+	
+	<form action="/settings/" method="post">
+	{% csrf_token %}
+	{{ form.non_field_errors }}
+	
+	<h5>My Interests</h5>
+		
+	<div class="rightcol">
+		{{ form.interests.errors }}
+		<input type="text" maxlength='42' value="What are you interested in?" id="new_interest" onfocus="this.value = '';" />
+		<input type="button" value="Add" id="addkeywords" />
+		{{ form.interests }}
+		<div class="keywords">
+			{% for interest in interest_list %}
+				<span class="interest_tag" id="tag{{ forloop.counter }}" value="{{ interest }}">{{ interest }} <a href="#" onclick="killTag(tag{{ forloop.counter }})")>&times;</a></span>
+			{% endfor %}
+		</div>
+	</div>
+	
+	<hr />
+	
+	<h5>My Profile</h5>
+	<div class="rightcol">
+		{{ form.firstname.errors }}
+		First name: {{ form.firstname }}<br />
+		{{ form.lastname.errors }}
+		Last name: {{ form.lastname }}<br />
+		{{ form.email.errors }}
+		Email: {{ form.email }}
+	</div>
+	
+	<hr />
+	
+	<h5>My Location</h5>
+	<div class="rightcol">
+		{{ form.zipcode.errors }}
+		Zip code: {{ form.zipcode }}
+	</div>
+	
+	<input type="submit" value="Save" id="submit" />
+	</form>
+	
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		function updateInterests() {
+			keys = '';
+			$('span').each(function() {
+				keys += $(this).attr("value") + ',';
+			});
+			keys = keys.substring(0,keys.length-1);
+			$('input#id_interests').val(keys);
+		}
+		
+		function killTag(id) {
+			id.parentNode.removeChild(id);
+			updateInterests();
+		}
+		
+	    $(document).ready(function() {
+			var totalKeysEver = $('.interest_tag').length;
+			
+			$('#addkeywords').click(function() {
+				var key = $('#new_interest').val();
+				if(key != '' & key != 'What are you interested in?') {
+					totalKeysEver++;
+					$('.keywords').append('<span class="interest_tag" id="tag' + totalKeysEver + '" value="' + key + '">' + key + ' <a href="#" onclick="killTag(tag' + totalKeysEver + ')">&times;</a></span>');
+					updateInterests();
+				}
+			});
+		});
+	</script>
+
+{% endblock %}

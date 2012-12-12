@@ -1,0 +1,40 @@
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- InstanceBeginEditable name="doctitle" -->
+        <title>{% block title %}{% endblock %}</title>
+        <!-- InstanceEndEditable -->
+		<style type="text/css">
+			{% include 'main.css' %}
+		</style>
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Codystar|Sanchez:400italic,400" rel="stylesheet" type="text/css" />
+        <script type="text/javascript">
+			function clearDefault(el) {
+				if (el.defaultValue == el.value) el.value = ""
+			}
+		</script>
+        <!-- InstanceBeginEditable name="head" -->
+        <!-- InstanceEndEditable -->
+    </head>
+    <body>
+        <nav>
+            <ul>
+                {% block navlist %}{% endblock %}
+            </ul>
+        </nav>
+        <div id="wrapper">
+    	<!-- InstanceBeginEditable name="ContentRegion" -->
+		
+			{% block content %}{% endblock %}
+		
+		<!-- InstanceEndEditable -->
+        </div>
+    	<footer>
+        	<p>&copy; 2012 Dash. All rights reserved.</p>
+        </footer>
+    </body>
+<!-- InstanceEnd --></html>

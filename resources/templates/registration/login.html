@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+Sign In | Dash App
+{% endblock %}
+
+{% block navlist %}
+	<li class="logo"><a href="/index"><b>Dash</b></a></li>
+	<li class="login"><a href="/user/login">Sign In</a></li>
+	<li class="register"><a href="/user/register">Register</a></li>
+	<li class="home"><a href="/index">Home</a></li>
+{% endblock %}
+
+{% block content %}
+	<h1>Sign In</h1>
+	
+	<hr />
+	
+	{% if form.errors %}
+		<p>Login failed. Please try again.</p>
+	{% endif %}
+
+	<form action="." method="post" id="login-form">{% csrf_token %}
+	  <div class="form-row">
+		<label for="id_username">Username:</label>
+			<input type="text" name="username" id="id_username" />
+	  </div>
+	  <div class="form-row">
+		<label for="id_password">Password:</label>
+			<input type="password" name="password" id="id_password" size="37" />
+		<input type="hidden" name="this_is_the_login_form" value="1" />
+	  </div>
+	  {% if next %}
+		<input type="hidden" name="next" value="{{ next }}" />
+	  {% else %}
+		<input type="hidden" name="next" value="/settings" />
+	  {% endif %}
+	  <div class="submit-row">
+		<label>&nbsp;</label><input type="submit" value="Log in" />
+	  </div>
+	</form>
+
+	<script type="text/javascript">
+		document.getElementById('id_username').focus()
+	</script>
+{% endblock %}

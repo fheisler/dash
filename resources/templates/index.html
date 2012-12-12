@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home | Dash App
+{% endblock %}
+
+{% block navlist %}
+	<li class="logo"><a href="/index"><b>Dash</b></a></li>
+	{% if user.is_authenticated %}
+		<li class="login"><a href="/signout">Sign Out</a></li>
+		<li class="settings"><a href="/settings">Settings</a></li>
+	{% else %}
+		<li class="login"><a href="/user/login">Sign In</a></li>
+		<li class="register"><a href="/user/register">Register</a></li>
+	{% endif %}
+	<li class="home"><a href="/index">Home</a></li>
+{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+			<div id="columns">
+				{% for item in items %}
+					<div class="{{ item.type }}"><span class="icon"></span>
+					<h4><a href="{{ item.url }}">{{ item.title }}</a></h4>
+					<p>{{ item.body }}</p></div>
+				{% endfor %}
+			</div>
+		{% else %}
+			<p>Please <a href="/user/login">sign in</a> to start using Dash.</p>
+		{% endif %}
+{% endblock %}

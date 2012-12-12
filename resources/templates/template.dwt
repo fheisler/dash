@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- TemplateBeginEditable name="doctitle" -->
+        <title>Dash</title>
+        <!-- TemplateEndEditable -->
+        <link type="text/css" rel="stylesheet" href="stylesheets/main.css" />
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Codystar|Sanchez:400italic,400" rel="stylesheet" type="text/css" />
+        <script type="text/javascript">
+			function clearDefault(el) {
+				if (el.defaultValue == el.value) el.value = ""
+			}
+		</script>
+        <!-- TemplateBeginEditable name="head" -->
+        <!-- TemplateEndEditable -->
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li class="logo"><a href="index.html"><b>Dash</b></a></li>
+                <li class="signin"><a href="signin.html">Sign Out</a></li>
+                <li class="settings"><a href="settings.html">Settings</a></li>
+                <li class="home"><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+        <div id="wrapper">
+    	<!-- TemplateBeginEditable name="ContentRegion" -->
+        	ContentRegion
+		<!-- TemplateEndEditable -->
+        </div>
+    	<footer>
+        	<p>&copy; 2012 Dash App. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
